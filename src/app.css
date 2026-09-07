@@ -1,0 +1,157 @@
+/* Authentic Minimalist Design Tokens — Zero AI Clichés */
+:root {
+  --font-main: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+
+  --c-black: #0a0a0b;
+  --c-charcoal: #18181b;
+  --c-gray-900: #1c1d21;
+  --c-gray-700: #3f3f46;
+  --c-gray-500: #71717a;
+  --c-gray-300: #d4d4d8;
+  --c-gray-200: #e4e4e7;
+  --c-gray-100: #f4f4f5;
+  --c-bg-subtle: #fafafb;
+  --c-white: #ffffff;
+
+  /* Official Brand Colors from Logo */
+  --c-brand-blue: #6990c0;
+  --c-brand-purple: #9d5e95;
+  --c-brand-blue-subtle: rgba(105, 144, 192, 0.1);
+  --c-brand-purple-subtle: rgba(157, 94, 149, 0.1);
+
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 14px;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 84px;
+  font-family: var(--font-main);
+  background-color: var(--c-white);
+  color: var(--c-charcoal);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  line-height: 1.55;
+  overflow-x: hidden;
+  font-size: 16px;
+}
+
+/* Authentic Buttons */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  font-family: var(--font-main);
+  font-weight: 600;
+  font-size: 0.925rem;
+  padding: 0.75rem 1.4rem;
+  border-radius: var(--radius-sm);
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  border: 1px solid transparent;
+}
+
+.btn-primary {
+  background: var(--c-black);
+  color: var(--c-white);
+}
+
+.btn-primary:hover {
+  background: #27272a;
+}
+
+.btn-secondary {
+  background: var(--c-white);
+  color: var(--c-charcoal);
+  border-color: var(--c-gray-200);
+}
+
+.btn-secondary:hover {
+  background: var(--c-gray-100);
+  border-color: var(--c-gray-300);
+}
+
+.btn-whatsapp {
+  background: #f0fdf4;
+  color: #15803d;
+  border-color: #bbf7d0;
+}
+
+.btn-whatsapp:hover {
+  background: #dcfce7;
+}
+
+.btn-lg {
+  padding: 0.85rem 1.75rem;
+  font-size: 1rem;
+}
+
+.btn-block {
+  width: 100%;
+}
+
+/* Subtle Layout Utility */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+.section {
+  padding: 5.5rem 0;
+}
+
+.section-subtle {
+  background: var(--c-bg-subtle);
+  border-top: 1px solid var(--c-gray-200);
+  border-bottom: 1px solid var(--c-gray-200);
+}
+
+.kicker {
+  display: inline-block;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--c-gray-500);
+  margin-bottom: 0.65rem;
+}
+
+.title-xl {
+  font-size: clamp(2.25rem, 4.5vw, 3.25rem);
+  font-weight: 800;
+  line-height: 1.1;
+  letter-spacing: -0.035em;
+  color: var(--c-black);
+}
+
+.title-lg {
+  font-size: clamp(1.85rem, 3.2vw, 2.35rem);
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: -0.025em;
+  color: var(--c-black);
+}
+
+.lead {
+  font-size: 1.05rem;
+  line-height: 1.6;
+  color: var(--c-gray-700);
+}
+
+:focus-visible {
+  outline: 2px solid var(--c-black);
+  outline-offset: 2px;
+}
