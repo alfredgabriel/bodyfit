@@ -1,5 +1,6 @@
 <script>
   import { t, currentLang, setLanguage } from '../i18n/store.js';
+  import logoSrc from '../assets/BodyFitLogo.png';
 
   let isScrolled = $state(false);
   let mobileMenuOpen = $state(false);
@@ -29,7 +30,7 @@
   <div class="nav-inner">
     <!-- Brand Logo -->
     <a href="#inicio" class="brand" onclick={closeMenu}>
-      <img src="/images/BodyFitLogo.png" alt="BodyFit Zorroza" class="brand-logo" />
+      <img src={logoSrc} alt="BodyFit Zorroza" class="brand-logo" />
       <div class="brand-text">
         <span class="brand-name">BodyFit</span>
         <span class="brand-location">GIMNASIO · ZORROZA</span>

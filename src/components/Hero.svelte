@@ -1,5 +1,6 @@
 <script>
   import { t } from '../i18n/store.js';
+  import logoSrc from '../assets/BodyFitLogo.png';
 </script>
 
 <section id="inicio" class="hero">
@@ -43,7 +44,7 @@
     <div class="hero-visual">
       <div class="visual-card">
         <div class="card-interior">
-          <img src="/images/BodyFitLogo.png" alt="BodyFit" class="visual-logo" />
+          <img src={logoSrc} alt="BodyFit" class="visual-logo" />
           <div class="visual-text">
             <h3>BodyFit Zorroza</h3>
             <p>Espacio reservado para foto del gimnasio</p>

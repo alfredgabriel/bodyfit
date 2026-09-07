@@ -1,5 +1,6 @@
 <script>
   import { t } from '../i18n/store.js';
+  import logoSrc from '../assets/BodyFitLogo.png';
   const currentYear = new Date().getFullYear();
 </script>
 
@@ -68,7 +69,7 @@
 <footer class="footer">
   <div class="container footer-row">
     <div class="f-brand-block">
-      <img src="/images/BodyFitLogo.png" alt="BodyFit Zorroza" class="f-logo" />
+      <img src={logoSrc} alt="BodyFit Zorroza" class="f-logo" />
       <span class="f-name">BodyFit</span>
       <span class="f-sub">ZORROZA</span>
       <span class="f-sep">/</span>
