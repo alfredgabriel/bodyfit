@@ -1,5 +1,6 @@
 <script>
   import { t } from '../i18n/store.js';
+  import salaMusculacionImg from '../assets/sala-de-musculacion.jpeg';
 </script>
 
 <section id="disciplinas" class="section">
@@ -21,10 +22,12 @@
       </div>
       <div class="showcase-media">
         <div class="photo-container large-photo">
-          <div class="photo-placeholder">
-            <span class="camera-icon">📷</span>
-            <span class="photo-label">Fotografía — Sala de musculación y peso libre</span>
-          </div>
+          <img
+            src={salaMusculacionImg}
+            alt="Sala de Musculación BodyFit Zorroza"
+            class="showcase-img"
+            loading="lazy"
+          />
         </div>
       </div>
     </div>
@@ -296,9 +299,22 @@
     background: var(--c-bg-subtle);
     border: 1px solid var(--c-gray-200);
     border-radius: var(--radius-md);
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
   }
   .large-photo {
     aspect-ratio: 4 / 3;
+    width: 100%;
+  }
+  .showcase-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.35s ease;
+  }
+  .photo-container:hover .showcase-img {
+    transform: scale(1.025);
   }
 
   /* Responsive */
