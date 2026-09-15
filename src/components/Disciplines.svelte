@@ -1,6 +1,22 @@
 <script>
   import { t } from '../i18n/store.js';
-  import salaMusculacionImg from '../assets/sala-de-musculacion.jpeg';
+  import photo1 from '../assets/sala-de-musculacion.jpeg';
+  import photo2 from '../assets/sala-de-musculacion-2.jpeg';
+
+  const musculacionPhotos = [
+    { src: photo1, alt: "Sala de Musculación y zona de peso libre en BodyFit Zorroza" },
+    { src: photo2, alt: "Zona de cardio y maquinaria guiada en BodyFit Zorroza" }
+  ];
+
+  let currentPhotoIndex = $state(0);
+
+  function prevPhoto() {
+    currentPhotoIndex = (currentPhotoIndex - 1 + musculacionPhotos.length) % musculacionPhotos.length;
+  }
+
+  function nextPhoto() {
+    currentPhotoIndex = (currentPhotoIndex + 1) % musculacionPhotos.length;
+  }
 </script>
 
 <section id="disciplinas" class="section">
@@ -21,13 +37,47 @@
         </div>
       </div>
       <div class="showcase-media">
-        <div class="photo-container large-photo">
-          <img
-            src={salaMusculacionImg}
-            alt="Sala de Musculación BodyFit Zorroza"
-            class="showcase-img"
-            loading="lazy"
-          />
+        <div class="photo-gallery">
+          <div class="photo-container large-photo">
+            <img
+              src={musculacionPhotos[currentPhotoIndex].src}
+              alt={musculacionPhotos[currentPhotoIndex].alt}
+              class="showcase-img"
+              loading="lazy"
+            />
+            <button
+              type="button"
+              class="gallery-nav-btn prev"
+              onclick={prevPhoto}
+              aria-label="Foto anterior"
+            >
+              ‹
+            </button>
+            <button
+              type="button"
+              class="gallery-nav-btn next"
+              onclick={nextPhoto}
+              aria-label="Foto siguiente"
+            >
+              ›
+            </button>
+            <div class="gallery-counter">
+              {currentPhotoIndex + 1} / {musculacionPhotos.length}
+            </div>
+          </div>
+          <div class="gallery-thumbs">
+            {#each musculacionPhotos as p, i}
+              <button
+                type="button"
+                class="thumb-btn"
+                class:active={currentPhotoIndex === i}
+                onclick={() => currentPhotoIndex = i}
+                aria-label={`Ver foto ${i + 1}`}
+              >
+                <img src={p.src} alt="" class="thumb-img" />
+              </button>
+            {/each}
+          </div>
         </div>
       </div>
     </div>
@@ -291,8 +341,15 @@
     margin: 0;
   }
 
-  /* Photo containers for Musculación */
+  /* Photo Gallery for Musculación */
+  .photo-gallery {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    width: 100%;
+  }
   .photo-container {
+    position: relative;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -314,7 +371,86 @@
     transition: transform 0.35s ease;
   }
   .photo-container:hover .showcase-img {
-    transform: scale(1.025);
+    transform: scale(1.02);
+  }
+
+  .gallery-nav-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.88);
+    backdrop-filter: blur(4px);
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    color: var(--c-black);
+    font-size: 1.4rem;
+    line-height: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background 0.15s ease, transform 0.15s ease;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+    z-index: 2;
+  }
+  .gallery-nav-btn:hover {
+    background: #ffffff;
+    transform: translateY(-50%) scale(1.08);
+  }
+  .gallery-nav-btn.prev {
+    left: 0.75rem;
+  }
+  .gallery-nav-btn.next {
+    right: 0.75rem;
+  }
+
+  .gallery-counter {
+    position: absolute;
+    bottom: 0.75rem;
+    right: 0.75rem;
+    background: rgba(15, 23, 42, 0.75);
+    backdrop-filter: blur(4px);
+    color: #ffffff;
+    font-size: 0.75rem;
+    font-weight: 600;
+    padding: 0.25rem 0.65rem;
+    border-radius: 999px;
+    letter-spacing: 0.05em;
+    z-index: 2;
+  }
+
+  .gallery-thumbs {
+    display: flex;
+    gap: 0.6rem;
+  }
+  .thumb-btn {
+    width: 72px;
+    height: 52px;
+    padding: 0;
+    border: 2px solid transparent;
+    border-radius: var(--radius-sm);
+    overflow: hidden;
+    cursor: pointer;
+    background: var(--c-bg-subtle);
+    opacity: 0.6;
+    transition: opacity 0.15s ease, border-color 0.15s ease, transform 0.15s ease;
+  }
+  .thumb-btn:hover {
+    opacity: 0.9;
+  }
+  .thumb-btn.active {
+    opacity: 1;
+    border-color: var(--c-brand-blue, #6990c0);
+    transform: translateY(-2px);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  }
+  .thumb-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
   }
 
   /* Responsive */

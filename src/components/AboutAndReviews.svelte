@@ -1,5 +1,6 @@
 <script>
   import { t } from '../i18n/store.js';
+  import gymPhoto from '../assets/sala-de-musculacion-2.jpeg';
 
   const reviews = [
     {
@@ -36,7 +37,12 @@
 
       <div class="about-visual">
         <div class="about-frame">
-          <span>Fotografía — Espacio del gimnasio y ambiente de entrenamiento</span>
+          <img
+            src={gymPhoto}
+            alt="Ambiente y comunidad en BodyFit Zorroza"
+            class="about-img"
+            loading="lazy"
+          />
         </div>
       </div>
     </div>
@@ -103,13 +109,18 @@
     background: var(--c-bg-subtle);
     border: 1px solid var(--c-gray-200);
     border-radius: var(--radius-md);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 2rem;
-    text-align: center;
-    color: var(--c-gray-500);
-    font-size: 0.85rem;
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+  }
+  .about-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.35s ease;
+  }
+  .about-frame:hover .about-img {
+    transform: scale(1.02);
   }
 
   .reviews-section {
